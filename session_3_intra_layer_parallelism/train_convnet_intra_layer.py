@@ -14,11 +14,11 @@ from model.conv_net_tensor_parallel import ConvNet
 from utils import print_memory_stats, num_params, log_dist
 from args import create_parser
 
-NUM_EPOCHS=10000
+NUM_EPOCHS=120
 PRINT_EVERY=200
 
-torch.cuda.manual_seed_all(42)
 torch.manual_seed(42)
+torch.cuda.manual_seed_all(42)
 torch.use_deterministic_algorithms(True)
 torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.deterministic = True
@@ -36,8 +36,6 @@ if __name__ == "__main__":
                 G_intra_r=args.G_intra_r,
                 G_intra_c=args.G_intra_c,
                 G_intra_d=args.G_intra_d,
-                mixed_precision=True,
-                fp16_allreduce=True,
             )
     
     log_dist('initialized AxoNN', ranks=[0])
