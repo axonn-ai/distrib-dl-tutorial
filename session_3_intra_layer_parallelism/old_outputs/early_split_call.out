@@ -1,0 +1,30 @@
+/var/spool/slurmd/job4129998/slurm_script: line 21: export: `0': not a valid identifier
+/var/spool/slurmd/job4129998/slurm_script: line 22: export: `16': not a valid identifier
+mpirun -np 4 python train_axonn_intra_layer.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+*** The MPI_Comm_split() function was called before MPI_INIT was invoked.
+*** This is disallowed by the MPI standard.
+*** Your MPI job will now abort.
+[compute-b8-39.zaratan.umd.edu:2830257] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!
+*** The MPI_Comm_split() function was called before MPI_INIT was invoked.
+*** This is disallowed by the MPI standard.
+*** Your MPI job will now abort.
+[compute-b8-39.zaratan.umd.edu:2830258] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!
+*** The MPI_Comm_split() function was called before MPI_INIT was invoked.
+*** This is disallowed by the MPI standard.
+*** Your MPI job will now abort.
+[compute-b8-39.zaratan.umd.edu:2830259] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!
+*** The MPI_Comm_split() function was called before MPI_INIT was invoked.
+*** This is disallowed by the MPI standard.
+*** Your MPI job will now abort.
+[compute-b8-39.zaratan.umd.edu:2830260] Local abort before MPI_INIT completed completed successfully, but am not able to aggregate error messages, and not able to guarantee that all other processes were killed!
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[16272,1],1]
+  Exit code:    1
+--------------------------------------------------------------------------

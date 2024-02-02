@@ -1,0 +1,70 @@
+/var/spool/slurmd/job4262015/slurm_script: line 21: export: `0': not a valid identifier
+/var/spool/slurmd/job4262015/slurm_script: line 22: export: `16': not a valid identifier
+mpirun -np 4 python train_axonn_intra_layer.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+testing
+1
+4
+4
+2
+2
+testing
+1
+4
+4
+2
+2
+testing
+1
+4
+4
+2
+2
+testing
+1
+4
+4
+2
+2
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 70, in __init__
+    assert (
+AssertionError: The product of G_inter and G_data should be equal to the number of GPUs
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 70, in __init__
+    assert (
+AssertionError: The product of G_inter and G_data should be equal to the number of GPUs
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 70, in __init__
+    assert (
+AssertionError: The product of G_inter and G_data should be equal to the number of GPUs
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 70, in __init__
+    assert (
+AssertionError: The product of G_inter and G_data should be equal to the number of GPUs
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[64108,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 import torch.nn as nn
 import torch
-from axonn.intra_layer import Tensor_Parallel_Linear, drop, gather
+from axonn.intra_layer import Linear, drop, gather
 from axonn import axonn as ax
 
 class FC_Net(nn.Module):
@@ -35,11 +35,11 @@ class FC_Net_Layer(nn.Module):
         #self.norm = nn.LayerNorm(hidden_size)
 
         ## replace nn.Linear with Tensor Parallel Linear
-        self.linear_1 = Tensor_Parallel_Linear(in_features=hidden_size, out_features=4 * hidden_size)
+        self.linear_1 = Linear(in_features=hidden_size, out_features=4 * hidden_size, scatter_input=False, gather_output=False)
         self.relu = nn.ReLU()
         ## replace nn.Linear with Tensor Parallel Linear
         ## every alternate layer needs to be 'transposed'
-        self.linear_2 = Tensor_Parallel_Linear(in_features = 4 * hidden_size, out_features = hidden_size, transpose=True)
+        self.linear_2 = Linear(in_features = 4 * hidden_size, out_features = hidden_size, transpose=True, scatter_input=False, gather_output=False)
 
     def forward(self, x):
         #h = self.norm(x)

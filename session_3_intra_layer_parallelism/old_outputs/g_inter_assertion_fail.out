@@ -1,0 +1,68 @@
+/var/spool/slurmd/job4148614/slurm_script: line 21: export: `0': not a valid identifier
+/var/spool/slurmd/job4148614/slurm_script: line 22: export: `16': not a valid identifier
+mpirun -np 4 python train_axonn_intra_layer.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py:579: UserWarning: For MPI backend, world_size (4) and rank (0) are ignored since they are assigned by the MPI runtime.
+  warnings.warn(
+/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py:579: UserWarning: For MPI backend, world_size (4) and rank (0) are ignored since they are assigned by the MPI runtime.
+  warnings.warn(
+/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py:579: UserWarning: For MPI backend, world_size (4) and rank (0) are ignored since they are assigned by the MPI runtime.
+  warnings.warn(
+/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py:579: UserWarning: For MPI backend, world_size (4) and rank (0) are ignored since they are assigned by the MPI runtime.
+  warnings.warn(
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 95, in __init__
+    assert self.p2p_mpi_comm.Get_size() == G_inter
+AssertionError
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 95, in __init__
+    assert self.p2p_mpi_comm.Get_size() == G_inter
+AssertionError
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 95, in __init__
+    assert self.p2p_mpi_comm.Get_size() == G_inter
+AssertionError
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 27, in <module>
+    ax.init(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/axonn.py", line 130, in init
+    comm_handle = communication_handle(
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/communication.py", line 95, in __init__
+    assert self.p2p_mpi_comm.Get_size() == G_inter
+AssertionError
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[42997,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+[compute-a7-30.zaratan.umd.edu:3272212] 3 more processes have sent help message help-mpi-common-cuda.txt / dlopen failed
+[compute-a7-30.zaratan.umd.edu:3272212] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages

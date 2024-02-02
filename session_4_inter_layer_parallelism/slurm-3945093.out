@@ -1,0 +1,45 @@
+1
+4
+mpirun -np 4 python train_axonn_inter_layer.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv/ --batch-size 32 --lr 0.001 --image-size 64 --G-inter 4 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+Rank 0 : initialized AxoNN for CPU execution
+Rank 0 : Model Params = 0.167837696 B
+Rank 0 : Begin Training with AxoNN's Inter-Layer Parallelism ... 
+
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 0/1875 | Iter Train Loss = 2.380 | Iter Time = 1.001754 s
+[compute-a7-56.zaratan.umd.edu:657180] 3 more processes have sent help message help-mpi-common-cuda.txt / dlopen failed
+[compute-a7-56.zaratan.umd.edu:657180] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 200/1875 | Iter Train Loss = 1.038 | Iter Time = 0.977254 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 400/1875 | Iter Train Loss = 0.684 | Iter Time = 0.972311 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 600/1875 | Iter Train Loss = 0.394 | Iter Time = 0.980548 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 800/1875 | Iter Train Loss = 0.448 | Iter Time = 0.980378 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 1000/1875 | Iter Train Loss = 0.655 | Iter Time = 1.148305 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 1200/1875 | Iter Train Loss = 0.192 | Iter Time = 0.951948 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 1400/1875 | Iter Train Loss = 0.495 | Iter Time = 0.957241 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 1600/1875 | Iter Train Loss = 0.295 | Iter Time = 0.957100 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 | Iter 1800/1875 | Iter Train Loss = 0.259 | Iter Time = 0.968197 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 0 : Epoch Train Loss= 0.883 | Average Iter Time = 0.984056 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 0/1875 | Iter Train Loss = 0.419 | Iter Time = 11.482964 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 200/1875 | Iter Train Loss = 0.404 | Iter Time = 0.988792 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 400/1875 | Iter Train Loss = 0.241 | Iter Time = 0.994983 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 600/1875 | Iter Train Loss = 0.513 | Iter Time = 1.010704 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 800/1875 | Iter Train Loss = 0.612 | Iter Time = 0.995491 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 1000/1875 | Iter Train Loss = 0.220 | Iter Time = 0.998931 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 1200/1875 | Iter Train Loss = 0.144 | Iter Time = 0.998783 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 1400/1875 | Iter Train Loss = 0.370 | Iter Time = 0.992459 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 1600/1875 | Iter Train Loss = 0.603 | Iter Time = 1.000434 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 | Iter 1800/1875 | Iter Train Loss = 0.282 | Iter Time = 0.995840 s
+DP Rank : 0 | ILP Rank : 3 - Epoch 1 : Epoch Train Loss= 0.431 | Average Iter Time = 1.016162 s
+Rank 0 : 
+ End Training ...

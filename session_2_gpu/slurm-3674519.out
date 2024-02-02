@@ -1,0 +1,47 @@
+Collecting mpi4py
+  Using cached mpi4py-3.1.4.tar.gz (2.5 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: mpi4py
+  Building wheel for mpi4py (pyproject.toml): started
+  Building wheel for mpi4py (pyproject.toml): finished with status 'done'
+  Created wheel for mpi4py: filename=mpi4py-3.1.4-cp38-cp38-linux_x86_64.whl size=6024216 sha256=57d7996b831dc405a6d44ff6da311417afdd7585833e5487364c2f6a2cc63aec
+  Stored in directory: /home/sathwik7/.cache/pip/wheels/f3/35/48/0b9a7076995eea5ea64a7e4bc3f0f342f453080795276264e7
+Successfully built mpi4py
+Installing collected packages: mpi4py
+Successfully installed mpi4py-3.1.4
+mpirun -np 4 python train_ddp.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/axonn --batch-size 32 --lr 0.001 --image-size 64 --checkpoint-activations
+Rank 0 : initialized pytorch dist
+Rank 0 : Model Size = 0.142686218 B
+Rank 0 : Start training with DDP...
+
+Rank 0 : Epoch 0 | Iter 0/1875 | Iter Train Loss = 2.513 | Iter Time = 0.930918 s
+Rank 0 : Epoch 0 | Iter 200/1875 | Iter Train Loss = 1.757 | Iter Time = 0.022410 s
+Rank 0 : Epoch 0 | Iter 400/1875 | Iter Train Loss = 0.517 | Iter Time = 0.022014 s
+Rank 0 : Epoch 0 | Iter 600/1875 | Iter Train Loss = 1.315 | Iter Time = 0.021898 s
+Rank 0 : Epoch 0 | Iter 800/1875 | Iter Train Loss = 0.797 | Iter Time = 0.021862 s
+Rank 0 : Epoch 0 | Iter 1000/1875 | Iter Train Loss = 0.194 | Iter Time = 0.022030 s
+Rank 0 : Epoch 0 | Iter 1200/1875 | Iter Train Loss = 0.438 | Iter Time = 0.022150 s
+Rank 0 : Epoch 0 | Iter 1400/1875 | Iter Train Loss = 0.048 | Iter Time = 0.022569 s
+Rank 0 : Epoch 0 | Iter 1600/1875 | Iter Train Loss = 0.192 | Iter Time = 0.021919 s
+Rank 0 : Epoch 0 | Iter 1800/1875 | Iter Train Loss = 0.371 | Iter Time = 0.022303 s
+Rank 0 : Epoch 0 : Epoch Train Loss= 1.044 | Average Iter Time = 0.022557 s
+Current Memory Usage = 2.66 GB | Peak Memory Usage = 2.92 GB
+Rank 0 : Epoch 1 | Iter 0/1875 | Iter Train Loss = 0.280 | Iter Time = 0.035077 s
+Rank 0 : Epoch 1 | Iter 200/1875 | Iter Train Loss = 0.787 | Iter Time = 0.021387 s
+Rank 0 : Epoch 1 | Iter 400/1875 | Iter Train Loss = 0.154 | Iter Time = 0.021676 s
+Rank 0 : Epoch 1 | Iter 600/1875 | Iter Train Loss = 0.498 | Iter Time = 0.022010 s
+Rank 0 : Epoch 1 | Iter 800/1875 | Iter Train Loss = 0.236 | Iter Time = 0.021810 s
+Rank 0 : Epoch 1 | Iter 1000/1875 | Iter Train Loss = 0.074 | Iter Time = 0.021744 s
+Rank 0 : Epoch 1 | Iter 1200/1875 | Iter Train Loss = 0.214 | Iter Time = 0.022072 s
+Rank 0 : Epoch 1 | Iter 1400/1875 | Iter Train Loss = 0.062 | Iter Time = 0.021752 s
+Rank 0 : Epoch 1 | Iter 1600/1875 | Iter Train Loss = 0.054 | Iter Time = 0.021883 s
+Rank 0 : Epoch 1 | Iter 1800/1875 | Iter Train Loss = 0.542 | Iter Time = 0.021589 s
+Rank 0 : Epoch 1 : Epoch Train Loss= 0.429 | Average Iter Time = 0.021754 s
+Current Memory Usage = 2.66 GB | Peak Memory Usage = 2.92 GB
+Rank 0 : 
+End training ..

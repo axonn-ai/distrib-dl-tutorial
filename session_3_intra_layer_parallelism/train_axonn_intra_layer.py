@@ -2,7 +2,9 @@ import torch
 import torchvision
 import sys
 import os
+import time
 from torchvision import transforms
+from torch.profiler import profile, record_function, ProfilerActivity
 import numpy as np
 from axonn import axonn as ax
 
@@ -15,6 +17,7 @@ from args import create_parser
 NUM_EPOCHS=2
 PRINT_EVERY=200
 
+torch.device('cpu')
 torch.manual_seed(0)
 
 if __name__ == "__main__":
@@ -27,8 +30,8 @@ if __name__ == "__main__":
                 G_inter=1,
                 G_intra_r=args.G_intra_r,
                 G_intra_c=args.G_intra_c,
-                mixed_precision=True,
-                fp16_allreduce=True,
+                mixed_precision=False,
+                fp16_allreduce=False,
             )
     
     log_dist('initialized AxoNN', ranks=[0])
@@ -56,7 +59,7 @@ if __name__ == "__main__":
     )
 
     ## Step 4 - Create Neural Network 
-    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
+    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).to(torch.device('cpu'))
     params = num_params(net) / 1e9 
     
     ## Step 5 - Create Optimizer 
@@ -72,9 +75,7 @@ if __name__ == "__main__":
     ax.register_loss_fn(loss_fn)
 
     ## Step 8 - Train
-    start_event = torch.cuda.Event(enable_timing=True)
-    stop_event = torch.cuda.Event(enable_timing=True)
-  
+      
     log_dist(f"Model Params = {num_params(net)*ax.config.G_intra/1e9} B", [0])
     log_dist(f"Start Training with AxoNN's Intra-Layer Parallelism", [0])
 
@@ -83,22 +84,19 @@ if __name__ == "__main__":
         iter_ = 0
         iter_times = []
         for img, label in train_loader:
-            start_event.record()
+            start_time_iter = time.time()
             optimizer.zero_grad()
-            img = img.cuda()
-            label = label.cuda()
+            img = img.to(torch.device('cpu'))
+            label = label.to(torch.device('cpu'))
             iter_loss = ax.run_batch(img, label)
             optimizer.step()
             
             epoch_loss += iter_loss
-            stop_event.record()
-            torch.cuda.synchronize()
-            iter_time = start_event.elapsed_time(stop_event)
+            iter_time = time.time() - start_time_iter
             iter_times.append(iter_time)
             if iter_ % PRINT_EVERY == 0:
-                log_dist(f"Epoch {epoch} | Iter {iter_}/{len(train_loader)} | Iter Train Loss = {iter_loss:.3f} | Iter Time = {iter_time/1000:.6f} s", [0])
+                log_dist(f"Epoch {epoch} | Iter {iter_}/{len(train_loader)} | Iter Train Loss = {iter_loss:.3f} | Iter Time = {iter_time:.6f} s", [0])
             iter_ += 1
         print_memory_stats()
-        log_dist(f"Epoch {epoch} : Epoch Train Loss= {epoch_loss/len(train_loader):.3f} | Average Iter Time = {np.mean(iter_times)/1000:.6f} s", [0])
+        log_dist(f"Epoch {epoch} : Epoch Train Loss= {epoch_loss/len(train_loader):.3f} | Average Iter Time = {np.mean(iter_times):.6f} s", [0])
         log_dist(f"End Training ...", [0])
-

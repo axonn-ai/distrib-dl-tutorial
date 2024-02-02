@@ -1,0 +1,45 @@
+mpirun -np 8 python train_ddp.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --checkpoint-activations
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+Rank 0 : initialized pytorch dist
+Rank 0 : Model Size = 0.142686218 B
+Rank 0 : Start training with DDP...
+
+Rank 0 : Epoch 0 | Iter 0/1875 | Iter Train Loss = 2.604 | Iter Time = 1.517568 s
+[compute-b6-24.zaratan.umd.edu:408312] 7 more processes have sent help message help-mpi-common-cuda.txt / dlopen failed
+[compute-b6-24.zaratan.umd.edu:408312] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Rank 0 : Epoch 0 | Iter 200/1875 | Iter Train Loss = 2.417 | Iter Time = 1.010150 s
+Rank 0 : Epoch 0 | Iter 400/1875 | Iter Train Loss = 0.006 | Iter Time = 0.989594 s
+Rank 0 : Epoch 0 | Iter 600/1875 | Iter Train Loss = 0.403 | Iter Time = 0.998461 s
+Rank 0 : Epoch 0 | Iter 800/1875 | Iter Train Loss = 1.585 | Iter Time = 1.003183 s
+Rank 0 : Epoch 0 | Iter 1000/1875 | Iter Train Loss = 0.014 | Iter Time = 1.008229 s
+Rank 0 : Epoch 0 | Iter 1200/1875 | Iter Train Loss = 0.074 | Iter Time = 0.994496 s
+Rank 0 : Epoch 0 | Iter 1400/1875 | Iter Train Loss = 0.032 | Iter Time = 1.007344 s
+Rank 0 : Epoch 0 | Iter 1600/1875 | Iter Train Loss = 0.060 | Iter Time = 1.004902 s
+Rank 0 : Epoch 0 | Iter 1800/1875 | Iter Train Loss = 1.050 | Iter Time = 0.996595 s
+Rank 0 : Epoch 0 : Epoch Train Loss= 0.805 | Average Iter Time = 0.996829 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 1 | Iter 0/1875 | Iter Train Loss = 0.404 | Iter Time = 2.670589 s
+Rank 0 : Epoch 1 | Iter 200/1875 | Iter Train Loss = 1.681 | Iter Time = 1.014910 s
+Rank 0 : Epoch 1 | Iter 400/1875 | Iter Train Loss = 0.001 | Iter Time = 1.014083 s
+Rank 0 : Epoch 1 | Iter 600/1875 | Iter Train Loss = 0.677 | Iter Time = 1.011201 s
+Rank 0 : Epoch 1 | Iter 800/1875 | Iter Train Loss = 0.548 | Iter Time = 0.993769 s
+Rank 0 : Epoch 1 | Iter 1000/1875 | Iter Train Loss = 0.002 | Iter Time = 1.017796 s
+Rank 0 : Epoch 1 | Iter 1200/1875 | Iter Train Loss = 0.089 | Iter Time = 1.006497 s
+Rank 0 : Epoch 1 | Iter 1400/1875 | Iter Train Loss = 0.005 | Iter Time = 0.999751 s
+Rank 0 : Epoch 1 | Iter 1600/1875 | Iter Train Loss = 0.741 | Iter Time = 1.010019 s
+Rank 0 : Epoch 1 | Iter 1800/1875 | Iter Train Loss = 1.083 | Iter Time = 1.010773 s
+Rank 0 : Epoch 1 : Epoch Train Loss= 0.461 | Average Iter Time = 1.009827 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : 
+End training ..

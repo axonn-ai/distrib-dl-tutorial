@@ -1,18 +1,19 @@
 #!/bin/bash
-#SBATCH -N 1
-#SBATCH -p gpu
-#SBATCH --gres=gpu:a100:4
-#SBATCH --ntasks-per-node 128 
-#SBATCH --time=00:05:00 
-#SBATCH -A isc2023-aac 
+#SBATCH -N 4
+#SBATCH -n 4
+#SBATCH -c 16
+#SBATCH --exclusive
+#SBATCH -p standard 
+#SBATCH --time=01:15:00 
+#SBATCH -A bhatele-lab-aac 
 
-DATA_DIR="/scratch/zt1/project/isc2023/shared/"
+DATA_DIR="/home/sathwik7/scratch.bhatele-lab/tutorial-venv/"
 
-. /scratch/zt1/project/isc2023/shared/tutorial-venv/bin/activate
+module load gcc/9.4.0
+module load openmpi
+. /home/sathwik7/scratch.bhatele-lab/tutorial-venv/bin/activate
 
-module load cuda
-
-INSTALL_PATH="/scratch/zt1/project/isc2023/shared/installations"
+INSTALL_PATH="/home/sathwik7/scratch.bhatele-lab/tutorial-venv/"
 export PATH="${PATH}:${INSTALL_PATH}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${INSTALL_PATH}/lib"
 

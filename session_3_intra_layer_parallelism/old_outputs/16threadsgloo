@@ -1,0 +1,78 @@
+srun -n 4 python train_axonn_intra_layer.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+Rank 0 : initialized AxoNN
+Rank 0 : Model Params = 0.167944232 B
+Rank 0 : Start Training with AxoNN's Intra-Layer Parallelism
+Rank 0 : Epoch 0 | Iter 0/1875 | Iter Train Loss = 2.377 | Iter Time = 0.926520 s
+Rank 0 : Epoch 0 | Iter 200/1875 | Iter Train Loss = 1.422 | Iter Time = 0.294757 s
+Rank 0 : Epoch 0 | Iter 400/1875 | Iter Train Loss = 0.595 | Iter Time = 0.340988 s
+Rank 0 : Epoch 0 | Iter 600/1875 | Iter Train Loss = 0.689 | Iter Time = 0.306911 s
+Rank 0 : Epoch 0 | Iter 800/1875 | Iter Train Loss = 0.357 | Iter Time = 0.349969 s
+Rank 0 : Epoch 0 | Iter 1000/1875 | Iter Train Loss = 0.400 | Iter Time = 0.322202 s
+Rank 0 : Epoch 0 | Iter 1200/1875 | Iter Train Loss = 0.350 | Iter Time = 0.359999 s
+Rank 0 : Epoch 0 | Iter 1400/1875 | Iter Train Loss = 0.348 | Iter Time = 0.329347 s
+Rank 0 : Epoch 0 | Iter 1600/1875 | Iter Train Loss = 0.408 | Iter Time = 0.345325 s
+Rank 0 : Epoch 0 | Iter 1800/1875 | Iter Train Loss = 0.456 | Iter Time = 0.360816 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 0 : Epoch Train Loss= 1.852 | Average Iter Time = 0.356420 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 1 | Iter 0/1875 | Iter Train Loss = 0.569 | Iter Time = 0.857690 s
+Rank 0 : Epoch 1 | Iter 200/1875 | Iter Train Loss = 0.430 | Iter Time = 0.316476 s
+Rank 0 : Epoch 1 | Iter 400/1875 | Iter Train Loss = 0.181 | Iter Time = 0.364502 s
+Rank 0 : Epoch 1 | Iter 600/1875 | Iter Train Loss = 0.420 | Iter Time = 0.360132 s
+Rank 0 : Epoch 1 | Iter 800/1875 | Iter Train Loss = 0.208 | Iter Time = 0.322373 s
+Rank 0 : Epoch 1 | Iter 1000/1875 | Iter Train Loss = 0.177 | Iter Time = 0.294275 s
+Rank 0 : Epoch 1 | Iter 1200/1875 | Iter Train Loss = 0.139 | Iter Time = 0.402166 s
+Rank 0 : Epoch 1 | Iter 1400/1875 | Iter Train Loss = 1.817 | Iter Time = 0.321655 s
+Rank 0 : Epoch 1 | Iter 1600/1875 | Iter Train Loss = 3.234 | Iter Time = 0.336433 s
+Rank 0 : Epoch 1 | Iter 1800/1875 | Iter Train Loss = 1.004 | Iter Time = 0.333023 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 1 : Epoch Train Loss= 13.641 | Average Iter Time = 0.343083 s
+Rank 0 : End Training ...

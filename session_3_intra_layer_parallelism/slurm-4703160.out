@@ -1,0 +1,123 @@
+srun -n 4 python train_axonn_intra_layer.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.0001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+Rank 0 : initialized AxoNN
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 62, in <module>
+    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).to(torch.device('cpu'))
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in __init__
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in <listcomp>
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 38, in __init__
+    self.linear_1 = Linear(in_features=hidden_size, out_features=4 * hidden_size, scatter_input=False, gather_output=False)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 141, in __init__
+    initial_params = initialize_params(
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 38, in initialize_params
+    params = torch.empty((out_features, in_features), device=init_device)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/cuda/__init__.py", line 216, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 62, in <module>
+    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).to(torch.device('cpu'))
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in __init__
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in <listcomp>
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 38, in __init__
+    self.linear_1 = Linear(in_features=hidden_size, out_features=4 * hidden_size, scatter_input=False, gather_output=False)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 141, in __init__
+    initial_params = initialize_params(
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 38, in initialize_params
+    params = torch.empty((out_features, in_features), device=init_device)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/cuda/__init__.py", line 216, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 62, in <module>
+    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).to(torch.device('cpu'))
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in __init__
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in <listcomp>
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 38, in __init__
+    self.linear_1 = Linear(in_features=hidden_size, out_features=4 * hidden_size, scatter_input=False, gather_output=False)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 141, in __init__
+    initial_params = initialize_params(
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 38, in initialize_params
+    params = torch.empty((out_features, in_features), device=init_device)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/cuda/__init__.py", line 216, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+Traceback (most recent call last):
+  File "train_axonn_intra_layer.py", line 62, in <module>
+    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).to(torch.device('cpu'))
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in __init__
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 10, in <listcomp>
+    self.layers = nn.ModuleList([FC_Net_Layer(hidden_size) for _ in range(num_layers)])
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_3_intra_layer_parallelism/../model/fc_net_tensor_parallel.py", line 38, in __init__
+    self.linear_1 = Linear(in_features=hidden_size, out_features=4 * hidden_size, scatter_input=False, gather_output=False)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 141, in __init__
+    initial_params = initialize_params(
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/axonn/axonn/intra_layer/fully_connected.py", line 38, in initialize_params
+    params = torch.empty((out_features, in_features), device=init_device)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2022.06.15/linux-rhel8-zen2/gcc-9.4.0/py-torch-1.11.0-xsbh24pmd2hwdp7tikss4digwup6bemt/lib/python3.8/site-packages/torch/cuda/__init__.py", line 216, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
+srun: error: compute-b7-47: tasks 0-3: Exited with exit code 1

@@ -1,0 +1,28 @@
+python train_mp.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --checkpoint-activations
+Start training in mixed-precision ...
+
+Model Size = 0.142686218 B
+Epoch 0 | Iter 0/1875 | Iter Train Loss = 2.342 | Iter Time = 1.389156 s
+Epoch 0 | Iter 200/1875 | Iter Train Loss = 0.533 | Iter Time = 0.023214 s
+Epoch 0 | Iter 400/1875 | Iter Train Loss = 0.816 | Iter Time = 0.022623 s
+Epoch 0 | Iter 600/1875 | Iter Train Loss = 0.553 | Iter Time = 0.022594 s
+Epoch 0 | Iter 800/1875 | Iter Train Loss = 0.535 | Iter Time = 0.022715 s
+Epoch 0 | Iter 1000/1875 | Iter Train Loss = 0.933 | Iter Time = 0.022656 s
+Epoch 0 | Iter 1200/1875 | Iter Train Loss = 0.305 | Iter Time = 0.022789 s
+Epoch 0 | Iter 1400/1875 | Iter Train Loss = 0.344 | Iter Time = 0.022550 s
+Epoch 0 | Iter 1600/1875 | Iter Train Loss = 0.366 | Iter Time = 0.022804 s
+Epoch 0 | Iter 1800/1875 | Iter Train Loss = 0.380 | Iter Time = 0.022616 s
+Epoch 0 : Epoch Train Loss= 0.945 | Average Iter Time = 0.023450 s
+Epoch 1 | Iter 0/1875 | Iter Train Loss = 0.364 | Iter Time = 0.024376 s
+Epoch 1 | Iter 200/1875 | Iter Train Loss = 0.379 | Iter Time = 0.022550 s
+Epoch 1 | Iter 400/1875 | Iter Train Loss = 0.417 | Iter Time = 0.022597 s
+Epoch 1 | Iter 600/1875 | Iter Train Loss = 0.280 | Iter Time = 0.022562 s
+Epoch 1 | Iter 800/1875 | Iter Train Loss = 0.161 | Iter Time = 0.022557 s
+Epoch 1 | Iter 1000/1875 | Iter Train Loss = 1.050 | Iter Time = 0.022596 s
+Epoch 1 | Iter 1200/1875 | Iter Train Loss = 0.277 | Iter Time = 0.022605 s
+Epoch 1 | Iter 1400/1875 | Iter Train Loss = 0.258 | Iter Time = 0.022668 s
+Epoch 1 | Iter 1600/1875 | Iter Train Loss = 0.280 | Iter Time = 0.022593 s
+Epoch 1 | Iter 1800/1875 | Iter Train Loss = 0.434 | Iter Time = 0.022558 s
+Epoch 1 : Epoch Train Loss= 0.467 | Average Iter Time = 0.022692 s
+
+End of training.
