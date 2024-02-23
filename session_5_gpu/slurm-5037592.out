@@ -1,0 +1,63 @@
+mpirun -np 4 python train.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+Rank 0 : initialized AxoNN
+Rank 0 : Model Params = 0.168009768 B
+Rank 0 : Start Training with AxoNN's Intra-Layer Parallelism
+Traceback (most recent call last):
+  File "train.py", line 109, in <module>
+    _, predicted = net(img).max(1)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_5_gpu/../model/fc_net_easy_tensor_parallel.py", line 14, in forward
+    x = self.embed(x)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype
+Traceback (most recent call last):
+  File "train.py", line 109, in <module>
+    _, predicted = net(img).max(1)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_5_gpu/../model/fc_net_easy_tensor_parallel.py", line 14, in forward
+    x = self.embed(x)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype
+Traceback (most recent call last):
+  File "train.py", line 109, in <module>
+    _, predicted = net(img).max(1)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_5_gpu/../model/fc_net_easy_tensor_parallel.py", line 14, in forward
+    x = self.embed(x)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype
+Traceback (most recent call last):
+  File "train.py", line 109, in <module>
+    _, predicted = net(img).max(1)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/zt1/project/bhatele-lab/user/sathwik7/tutorial-venv/distrib-dl-tutorial/session_5_gpu/../model/fc_net_easy_tensor_parallel.py", line 14, in forward
+    x = self.embed(x)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sathwik7/.local/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[63435,1],2]
+  Exit code:    1
+--------------------------------------------------------------------------
