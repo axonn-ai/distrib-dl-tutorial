@@ -4,8 +4,8 @@
 #SBATCH --exclusive
 #SBATCH -c 16
 #SBATCH -p standard
-#SBATCH --time=02:00:00 
-#SBATCH -A bhatele-lab-aac 
+#SBATCH --time=10:00:00 
+#SBATCH -A bhatele-lab-cmsc 
 
 DATA_DIR="/home/sathwik7/scratch.bhatele-lab/tutorial-venv"
 
@@ -19,7 +19,7 @@ G_INTRA_COL=2
 # Set Environment Variables
 export OMP_NUM_THREADS=16
 
-cmd="srun -n 4 python train.py --num-layers 4 --hidden-size 2048 --data-dir ${DATA_DIR} --batch-size 32 --lr 0.0001 --image-size 64 --G-intra-r ${G_INTRA_ROW} --G-intra-c ${G_INTRA_COL} --G-data 1  --micro-batch-size 4 --checkpoint-activations"
+cmd="srun -n 4 python train.py --num-layers 4 --hidden-size 2048 --data-dir ${DATA_DIR} --batch-size 32 --lr 0.0001 --image-size 64 --G-intra-r ${G_INTRA_ROW} --G-intra-c ${G_INTRA_COL} --G-data 1  --micro-batch-size 4 --device cpu --checkpoint-activations"
 
 echo ${cmd}
 eval ${cmd}

@@ -1,0 +1,182 @@
+srun -n 4 python train.py --num-layers 4 --hidden-size 2048 --data-dir /home/sathwik7/scratch.bhatele-lab/tutorial-venv --batch-size 32 --lr 0.0001 --image-size 64 --G-intra-r 2 --G-intra-c 2 --G-data 1 --micro-batch-size 4 --checkpoint-activations
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+The library attempted to open the following supporting CUDA libraries,
+but each of them failed.  CUDA-aware support is disabled.
+libcuda.so.1: cannot open shared object file: No such file or directory
+libcuda.dylib: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.so.1: cannot open shared object file: No such file or directory
+/usr/lib64/libcuda.dylib: cannot open shared object file: No such file or directory
+If you are not interested in CUDA-aware support, then run with
+--mca opal_warn_on_missing_libcuda 0 to suppress this message.  If you are interested
+in CUDA-aware support, then try setting LD_LIBRARY_PATH to the location
+of libcuda.so.1 to get passed this issue.
+--------------------------------------------------------------------------
+Rank 0 : initialized AxoNN
+Rank 0 : Model Params = 0.168009768 B
+Rank 0 : Start Training with AxoNN's Intra-Layer Parallelism
+Rank 0 : Epoch 0 | Iter 0/1875 | Iter Train Loss = 2.308 | Iter Time = 1.017387 s
+Rank 0 : Epoch 0 | Iter 200/1875 | Iter Train Loss = 0.685 | Iter Time = 0.739945 s
+Rank 0 : Epoch 0 | Iter 400/1875 | Iter Train Loss = 0.364 | Iter Time = 0.661254 s
+Rank 0 : Epoch 0 | Iter 600/1875 | Iter Train Loss = 0.223 | Iter Time = 0.616149 s
+Rank 0 : Epoch 0 | Iter 800/1875 | Iter Train Loss = 0.307 | Iter Time = 0.643266 s
+Rank 0 : Epoch 0 | Iter 1000/1875 | Iter Train Loss = 0.245 | Iter Time = 0.709841 s
+Rank 0 : Epoch 0 | Iter 1200/1875 | Iter Train Loss = 0.116 | Iter Time = 0.725552 s
+Rank 0 : Epoch 0 | Iter 1400/1875 | Iter Train Loss = 0.097 | Iter Time = 0.611412 s
+Rank 0 : Epoch 0 | Iter 1600/1875 | Iter Train Loss = 0.084 | Iter Time = 0.651642 s
+Rank 0 : Epoch 0 | Iter 1800/1875 | Iter Train Loss = 0.130 | Iter Time = 0.791718 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 0 : Epoch Train Loss= 0.308 | Average Iter Time = 0.649948 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 1 | Iter 0/1875 | Iter Train Loss = 0.336 | Iter Time = 1.207244 s
+Rank 0 : Epoch 1 | Iter 200/1875 | Iter Train Loss = 0.102 | Iter Time = 0.632304 s
+Rank 0 : Epoch 1 | Iter 400/1875 | Iter Train Loss = 0.085 | Iter Time = 0.596059 s
+Rank 0 : Epoch 1 | Iter 600/1875 | Iter Train Loss = 0.174 | Iter Time = 0.616940 s
+Rank 0 : Epoch 1 | Iter 800/1875 | Iter Train Loss = 0.097 | Iter Time = 0.641034 s
+Rank 0 : Epoch 1 | Iter 1000/1875 | Iter Train Loss = 0.068 | Iter Time = 0.644582 s
+Rank 0 : Epoch 1 | Iter 1200/1875 | Iter Train Loss = 0.037 | Iter Time = 0.660873 s
+Rank 0 : Epoch 1 | Iter 1400/1875 | Iter Train Loss = 0.057 | Iter Time = 0.633650 s
+Rank 0 : Epoch 1 | Iter 1600/1875 | Iter Train Loss = 0.070 | Iter Time = 0.666678 s
+Rank 0 : Epoch 1 | Iter 1800/1875 | Iter Train Loss = 0.101 | Iter Time = 0.600646 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 1 : Epoch Train Loss= 0.169 | Average Iter Time = 0.658429 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 2 | Iter 0/1875 | Iter Train Loss = 0.090 | Iter Time = 1.265808 s
+Rank 0 : Epoch 2 | Iter 200/1875 | Iter Train Loss = 0.273 | Iter Time = 0.619086 s
+Rank 0 : Epoch 2 | Iter 400/1875 | Iter Train Loss = 0.084 | Iter Time = 0.713603 s
+Rank 0 : Epoch 2 | Iter 600/1875 | Iter Train Loss = 0.024 | Iter Time = 0.775639 s
+Rank 0 : Epoch 2 | Iter 800/1875 | Iter Train Loss = 0.102 | Iter Time = 0.612272 s
+Rank 0 : Epoch 2 | Iter 1000/1875 | Iter Train Loss = 0.141 | Iter Time = 0.662921 s
+Rank 0 : Epoch 2 | Iter 1200/1875 | Iter Train Loss = 0.027 | Iter Time = 0.677780 s
+Rank 0 : Epoch 2 | Iter 1400/1875 | Iter Train Loss = 0.057 | Iter Time = 0.633872 s
+Rank 0 : Epoch 2 | Iter 1600/1875 | Iter Train Loss = 0.101 | Iter Time = 0.685578 s
+Rank 0 : Epoch 2 | Iter 1800/1875 | Iter Train Loss = 0.144 | Iter Time = 0.665801 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 2 : Epoch Train Loss= 0.132 | Average Iter Time = 0.668007 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 3 | Iter 0/1875 | Iter Train Loss = 0.029 | Iter Time = 1.007504 s
+Rank 0 : Epoch 3 | Iter 200/1875 | Iter Train Loss = 0.067 | Iter Time = 0.702685 s
+Rank 0 : Epoch 3 | Iter 400/1875 | Iter Train Loss = 0.029 | Iter Time = 0.611609 s
+Rank 0 : Epoch 3 | Iter 600/1875 | Iter Train Loss = 0.058 | Iter Time = 0.583766 s
+Rank 0 : Epoch 3 | Iter 800/1875 | Iter Train Loss = 0.120 | Iter Time = 0.813822 s
+Rank 0 : Epoch 3 | Iter 1000/1875 | Iter Train Loss = 0.054 | Iter Time = 0.675452 s
+Rank 0 : Epoch 3 | Iter 1200/1875 | Iter Train Loss = 0.015 | Iter Time = 0.655426 s
+Rank 0 : Epoch 3 | Iter 1400/1875 | Iter Train Loss = 0.007 | Iter Time = 0.705855 s
+Rank 0 : Epoch 3 | Iter 1600/1875 | Iter Train Loss = 0.040 | Iter Time = 0.658489 s
+Rank 0 : Epoch 3 | Iter 1800/1875 | Iter Train Loss = 0.237 | Iter Time = 0.631438 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 3 : Epoch Train Loss= 0.115 | Average Iter Time = 0.672815 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 4 | Iter 0/1875 | Iter Train Loss = 0.092 | Iter Time = 1.212839 s
+Rank 0 : Epoch 4 | Iter 200/1875 | Iter Train Loss = 0.094 | Iter Time = 0.593416 s
+Rank 0 : Epoch 4 | Iter 400/1875 | Iter Train Loss = 0.018 | Iter Time = 0.756493 s
+Rank 0 : Epoch 4 | Iter 600/1875 | Iter Train Loss = 0.113 | Iter Time = 0.697697 s
+Rank 0 : Epoch 4 | Iter 800/1875 | Iter Train Loss = 0.104 | Iter Time = 0.754002 s
+Rank 0 : Epoch 4 | Iter 1000/1875 | Iter Train Loss = 0.052 | Iter Time = 0.649044 s
+Rank 0 : Epoch 4 | Iter 1200/1875 | Iter Train Loss = 0.109 | Iter Time = 0.677030 s
+Rank 0 : Epoch 4 | Iter 1400/1875 | Iter Train Loss = 0.017 | Iter Time = 0.611409 s
+Rank 0 : Epoch 4 | Iter 1600/1875 | Iter Train Loss = 0.037 | Iter Time = 0.709928 s
+Rank 0 : Epoch 4 | Iter 1800/1875 | Iter Train Loss = 0.064 | Iter Time = 0.814803 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 4 : Epoch Train Loss= 0.102 | Average Iter Time = 0.669311 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 5 | Iter 0/1875 | Iter Train Loss = 0.138 | Iter Time = 1.196640 s
+Rank 0 : Epoch 5 | Iter 200/1875 | Iter Train Loss = 0.115 | Iter Time = 0.613563 s
+Rank 0 : Epoch 5 | Iter 400/1875 | Iter Train Loss = 0.150 | Iter Time = 0.845171 s
+Rank 0 : Epoch 5 | Iter 600/1875 | Iter Train Loss = 0.058 | Iter Time = 0.655363 s
+Rank 0 : Epoch 5 | Iter 800/1875 | Iter Train Loss = 0.014 | Iter Time = 0.651069 s
+Rank 0 : Epoch 5 | Iter 1000/1875 | Iter Train Loss = 0.090 | Iter Time = 0.773332 s
+Rank 0 : Epoch 5 | Iter 1200/1875 | Iter Train Loss = 0.014 | Iter Time = 0.620029 s
+Rank 0 : Epoch 5 | Iter 1400/1875 | Iter Train Loss = 0.101 | Iter Time = 0.759564 s
+Rank 0 : Epoch 5 | Iter 1600/1875 | Iter Train Loss = 0.009 | Iter Time = 0.718360 s
+Rank 0 : Epoch 5 | Iter 1800/1875 | Iter Train Loss = 0.105 | Iter Time = 0.736874 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 5 : Epoch Train Loss= 0.093 | Average Iter Time = 0.670897 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 6 | Iter 0/1875 | Iter Train Loss = 0.078 | Iter Time = 1.127452 s
+Rank 0 : Epoch 6 | Iter 200/1875 | Iter Train Loss = 0.125 | Iter Time = 0.644752 s
+Rank 0 : Epoch 6 | Iter 400/1875 | Iter Train Loss = 0.004 | Iter Time = 0.700616 s
+Rank 0 : Epoch 6 | Iter 600/1875 | Iter Train Loss = 0.222 | Iter Time = 0.672018 s
+Rank 0 : Epoch 6 | Iter 800/1875 | Iter Train Loss = 0.127 | Iter Time = 0.653628 s
+Rank 0 : Epoch 6 | Iter 1000/1875 | Iter Train Loss = 0.026 | Iter Time = 0.796095 s
+Rank 0 : Epoch 6 | Iter 1200/1875 | Iter Train Loss = 0.041 | Iter Time = 0.665786 s
+Rank 0 : Epoch 6 | Iter 1400/1875 | Iter Train Loss = 0.061 | Iter Time = 0.737162 s
+Rank 0 : Epoch 6 | Iter 1600/1875 | Iter Train Loss = 0.013 | Iter Time = 0.686857 s
+Rank 0 : Epoch 6 | Iter 1800/1875 | Iter Train Loss = 0.042 | Iter Time = 0.719822 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 6 : Epoch Train Loss= 0.084 | Average Iter Time = 0.670448 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 7 | Iter 0/1875 | Iter Train Loss = 0.010 | Iter Time = 1.196466 s
+Rank 0 : Epoch 7 | Iter 200/1875 | Iter Train Loss = 0.059 | Iter Time = 0.784419 s
+Rank 0 : Epoch 7 | Iter 400/1875 | Iter Train Loss = 0.045 | Iter Time = 0.618094 s
+Rank 0 : Epoch 7 | Iter 600/1875 | Iter Train Loss = 0.085 | Iter Time = 0.779392 s
+Rank 0 : Epoch 7 | Iter 800/1875 | Iter Train Loss = 0.093 | Iter Time = 0.686479 s
+Rank 0 : Epoch 7 | Iter 1000/1875 | Iter Train Loss = 0.005 | Iter Time = 0.621232 s
+Rank 0 : Epoch 7 | Iter 1200/1875 | Iter Train Loss = 0.013 | Iter Time = 0.694178 s
+Rank 0 : Epoch 7 | Iter 1400/1875 | Iter Train Loss = 0.004 | Iter Time = 0.705772 s
+Rank 0 : Epoch 7 | Iter 1600/1875 | Iter Train Loss = 0.025 | Iter Time = 0.643311 s
+Rank 0 : Epoch 7 | Iter 1800/1875 | Iter Train Loss = 0.137 | Iter Time = 0.610934 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 7 : Epoch Train Loss= 0.079 | Average Iter Time = 0.663176 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 8 | Iter 0/1875 | Iter Train Loss = 0.020 | Iter Time = 1.108590 s
+Rank 0 : Epoch 8 | Iter 200/1875 | Iter Train Loss = 0.056 | Iter Time = 0.827535 s
+Rank 0 : Epoch 8 | Iter 400/1875 | Iter Train Loss = 0.043 | Iter Time = 0.679533 s
+Rank 0 : Epoch 8 | Iter 600/1875 | Iter Train Loss = 0.093 | Iter Time = 0.620807 s
+Rank 0 : Epoch 8 | Iter 800/1875 | Iter Train Loss = 0.291 | Iter Time = 0.666077 s
+Rank 0 : Epoch 8 | Iter 1000/1875 | Iter Train Loss = 0.011 | Iter Time = 0.678251 s
+Rank 0 : Epoch 8 | Iter 1200/1875 | Iter Train Loss = 0.004 | Iter Time = 0.674199 s
+Rank 0 : Epoch 8 | Iter 1400/1875 | Iter Train Loss = 0.020 | Iter Time = 0.659226 s
+Rank 0 : Epoch 8 | Iter 1600/1875 | Iter Train Loss = 0.016 | Iter Time = 0.656844 s
+Rank 0 : Epoch 8 | Iter 1800/1875 | Iter Train Loss = 0.037 | Iter Time = 0.686509 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 8 : Epoch Train Loss= 0.073 | Average Iter Time = 0.675820 s
+Rank 0 : End Training ...
+Rank 0 : Epoch 9 | Iter 0/1875 | Iter Train Loss = 0.074 | Iter Time = 1.175287 s
+Rank 0 : Epoch 9 | Iter 200/1875 | Iter Train Loss = 0.133 | Iter Time = 0.588650 s
+Rank 0 : Epoch 9 | Iter 400/1875 | Iter Train Loss = 0.039 | Iter Time = 0.660100 s
+Rank 0 : Epoch 9 | Iter 600/1875 | Iter Train Loss = 0.007 | Iter Time = 0.565600 s
+Rank 0 : Epoch 9 | Iter 800/1875 | Iter Train Loss = 0.005 | Iter Time = 0.769288 s
+Rank 0 : Epoch 9 | Iter 1000/1875 | Iter Train Loss = 0.040 | Iter Time = 0.618906 s
+Rank 0 : Epoch 9 | Iter 1200/1875 | Iter Train Loss = 0.004 | Iter Time = 0.594176 s
+Rank 0 : Epoch 9 | Iter 1400/1875 | Iter Train Loss = 0.016 | Iter Time = 0.640538 s
+Rank 0 : Epoch 9 | Iter 1600/1875 | Iter Train Loss = 0.038 | Iter Time = 0.862568 s
+Rank 0 : Epoch 9 | Iter 1800/1875 | Iter Train Loss = 0.023 | Iter Time = 0.904749 s
+Current Memory Usage = 0.00 GB | Peak Memory Usage = 0.00 GB
+Rank 0 : Epoch 9 : Epoch Train Loss= 0.071 | Average Iter Time = 0.676877 s
+Rank 0 : End Training ...
