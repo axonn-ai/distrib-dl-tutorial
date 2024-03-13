@@ -7,12 +7,14 @@ from torchvision import transforms
 import numpy as np
 from axonn import axonn as ax
 from axonn.intra_layer import Linear
-sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from model.fc_net_sequential import FC_Net
+from model.fc_net_sequential import FC_Net_Layer
 from utils import print_memory_stats, num_params, log_dist
 from args import create_parser
 import torch.fx
 from torch.fx import symbolic_trace
+from replace import replace_linear_layers_with_custom
 
 
 NUM_EPOCHS=2
@@ -60,36 +62,13 @@ if __name__ == "__main__":
         num_workers=1,
     )
 
-    model = FC_Net(num_layers=4, input_size=256, hidden_size=2048, output_size=10)
-    symbolic_traced:torch.fx.GraphModule = symbolic_trace(model)
-    print(symbolic_traced.graph)
-    modules_to_replace = []
-
-    for name, module in model.named_modules():
-        if isinstance(module, nn.Linear):
-            modules_to_replace.append((name, module))
-
-    for name, _ in modules_to_replace:
-        setattr(model, name, Linear(module.in_features, module.out_features))
-
-#    symbolic_traced = torch.fx.symbolic_trace(model)
-
-#    for name, module in model.named_modules():
-#        if isinstance(module, Linear):
-#            print("Found custom layer", name)
-
-    print(model)
-
-#    exit(1) 
-
-
-
-
-
     ## Step 4 - Create Neural Network 
-    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
-    params = num_params(net) / 1e9
+   # net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
+    net = FC_Net(num_layers=4, input_size=4096, hidden_size=2048, output_size=10)
 
+    net = replace_linear_layers_with_custom(net).cuda()
+    params = num_params(net) / 1e9
+    print(net)
     ## Step 5 - Create Optimizer 
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr)
 
