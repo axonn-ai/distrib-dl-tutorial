@@ -1,16 +1,21 @@
 import torch
+import torch.nn as nn
 import torchvision
 import sys
 import os
 from torchvision import transforms
 import numpy as np
 from axonn import axonn as ax
-
+from axonn.intra_layer import Linear
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-from model.fc_net_easy_tensor_parallel import FC_Net
+from model.fc_net_sequential import FC_Net
+from model.fc_net_sequential import FC_Net_Layer
 from utils import print_memory_stats, num_params, log_dist
 from args import create_parser
+import torch.fx
+from torch.fx import symbolic_trace
+from replace import replace_linear_layers_with_custom
+
 
 NUM_EPOCHS=2
 PRINT_EVERY=200
@@ -20,6 +25,8 @@ torch.manual_seed(0)
 if __name__ == "__main__":
     parser = create_parser()
     args = parser.parse_args()
+
+    torch.distributed.init_process_group() 
 
     ## Step 1 - Initialize AxoNN
     ax.init(
@@ -56,7 +63,10 @@ if __name__ == "__main__":
     )
 
     ## Step 4 - Create Neural Network 
-    net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
+   # net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
+    net = FC_Net(num_layers=4, input_size=4096, hidden_size=2048, output_size=10)
+
+    net = replace_linear_layers_with_custom(net).cuda()
     params = num_params(net) / 1e9
 
     ## Step 5 - Create Optimizer 
@@ -65,11 +75,11 @@ if __name__ == "__main__":
     ## Step 6 - register model and optimizer with AxoNN
     ## This creates the required data structures for
     ## mixed precision
-    net, optimizer = ax.register_model_and_optimizer(net, optimizer)
+  #  net, optimizer = ax.register_model_and_optimizer(net, optimizer)
 
     ## Step 7 - Create Loss Function and register it
     loss_fn = torch.nn.CrossEntropyLoss()
-    ax.register_loss_fn(loss_fn)
+   # ax.register_loss_fn(loss_fn)
 
     ## Step 8 - Train
     start_event = torch.cuda.Event(enable_timing=True)
@@ -87,7 +97,14 @@ if __name__ == "__main__":
             optimizer.zero_grad()
             img = img.cuda()
             label = label.cuda()
-            iter_loss = ax.run_batch(img, label)
+          #  iter_loss = ax.run_batch(img, label)
+            output = net(img)
+            iter_loss = loss_fn(output, label)
+
+            # Backawrd Pass
+            iter_loss.backward()
+
+ 
             optimizer.step()
 
             epoch_loss += iter_loss
