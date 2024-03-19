@@ -10,12 +10,17 @@ from axonn.intra_layer import Linear
 sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
 
 
-
 def replace_linear_layers_with_custom(model):
-        for name, module in model.named_modules():
-            if name == 'layers':  # Check if the module is 'layers' within the model
-                for layer_idx, layer_module in enumerate(module):
-                    for attr_name, attr_module in layer_module.named_children():
-                        if isinstance(attr_module, nn.Linear):  # Check if the child module is nn.Linear
-                            setattr(layer_module, attr_name, Linear(attr_module.in_features, attr_module.out_features))
-        return model
+    G_row = ax.config.G_intra_r 
+    G_col = ax.config.G_intra_c
+    G_depth = ax.config.G_intra_r 
+    for name, module in model.named_modules():
+        if isinstance(module, nn.Module):  
+            for attr_name, attr_module in module.named_children():
+                if isinstance(attr_module, nn.Linear):
+                    if (attr_module.out_features % G_row == 0) and \
+                       (attr_module.in_features % G_col == 0) and \
+                       ((attr_module.out_features * attr_module.in_features) / (G_row * G_col) % G_depth == 0):
+                        setattr(module, attr_name, Linear(attr_module.in_features, attr_module.out_features))
+    return model
+

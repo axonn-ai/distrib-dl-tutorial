@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     net = replace_linear_layers_with_custom(net).cuda()
     params = num_params(net) / 1e9
-    print(net)
+
     ## Step 5 - Create Optimizer 
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr)
 
