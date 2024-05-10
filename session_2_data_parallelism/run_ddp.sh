@@ -4,16 +4,17 @@
 #SBATCH --gres=gpu:a100:4
 #SBATCH --ntasks-per-node 128 
 #SBATCH --time=00:05:00
-#SBATCH -A isc2023-aac 
+#SBATCH -A bhatele-lab-cmsc 
 
-DATA_DIR="../data"
+module load python gcc/9.4.0 cuda openmpi/gcc
+# CHANGE AS PER PROJECT
+VENV_HOME="/scratch/zt1/project/bhatele-lab/shared/parallel-deep-learning"
+source $VENV_HOME/tutorial-venv/bin/activate
+DATA_DIR="$VENV_HOME/data"
 
-
-export NCCL_P2P_DISABLE=1 
-export NCCL_IB_DISABLE=1 
 
 ## Command for DDP
-cmd="torchrun --nproc_per_node 2 train_ddp.py --num-layers 4 --hidden-size 2048 --data-dir ${DATA_DIR} --batch-size 32 --lr 0.0001 --image-size 64 --checkpoint-activations"
+cmd="torchrun --nproc_per_node 4 train_ddp.py --num-layers 4 --hidden-size 2048 --data-dir ${DATA_DIR} --batch-size 32 --lr 0.0001 --image-size 64 --checkpoint-activations"
 
 echo "${cmd}"
 eval "${cmd}"
