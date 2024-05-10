@@ -19,7 +19,6 @@ from args import create_parser
 NUM_EPOCHS=2
 PRINT_EVERY=200
 
-
 if __name__ == "__main__":
     parser = create_parser()
     args = parser.parse_args()
