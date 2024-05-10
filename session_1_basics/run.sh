@@ -3,9 +3,13 @@
 #SBATCH -p gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --time=00:05:00
-#SBATCH -A isc2023-aac
+#SBATCH -A bhatele-lab-cmsc
 
-DATA_DIR="../data/"
+module load python gcc/9.4.0 cuda openmpi/gcc
+# CHANGE AS PER PROJECT
+VENV_HOME="/scratch/zt1/project/bhatele-lab/shared/parallel-deep-learning"
+source $VENV_HOME/tutorial-venv/bin/activate
+DATA_DIR="$VENV_HOME/data"
 
 
 SCRIPT=train.py
