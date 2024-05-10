@@ -4,12 +4,14 @@
 #SBATCH --gres=gpu:a100:4
 #SBATCH --ntasks-per-node 128 
 #SBATCH --time=00:05:00
-#SBATCH -A bhatele-lab-cmsc 
+#SBATCH -A isc-aac
 
 module load python gcc/9.4.0 cuda openmpi/gcc
-# CHANGE AS PER PROJECT
-VENV_HOME="/scratch/zt1/project/bhatele-lab/shared/parallel-deep-learning"
+VENV_HOME="/scratch/zt1/project/isc/shared/"
+
+# Activate python virtual environment
 source $VENV_HOME/tutorial-venv/bin/activate
+
 DATA_DIR="$VENV_HOME/data"
 
 
