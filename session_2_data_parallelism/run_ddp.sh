@@ -4,15 +4,19 @@
 #SBATCH --gres=gpu:a100:4
 #SBATCH --ntasks-per-node 128 
 #SBATCH --time=00:05:00
-#SBATCH -A isc2023-aac 
+#SBATCH -A isc-aac
 
-DATA_DIR="/scratch/zt1/project/isc2023/shared/"
+module load python gcc/9.4.0 cuda openmpi/gcc
+VENV_HOME="/scratch/zt1/project/isc/shared/"
 
-module load gcc/9.4.0 openmpi/gcc
-. /scratch/zt1/project/isc2023/shared/tutorial-venv/bin/activate
+# Activate python virtual environment
+source $VENV_HOME/tutorial-venv/bin/activate
+
+DATA_DIR="$VENV_HOME/data"
+
 
 ## Command for DDP
-cmd="mpirun -np 4 python train_ddp.py --num-layers 4 --hidden-size 2048 --data-dir ${DATA_DIR} --batch-size 32 --lr 0.0001 --image-size 64 --checkpoint-activations"
+cmd="torchrun --nproc_per_node 4 train_ddp.py --num-layers 4 --hidden-size 2048 --data-dir ${DATA_DIR} --batch-size 32 --lr 0.0001 --image-size 64 --checkpoint-activations"
 
 echo "${cmd}"
 eval "${cmd}"

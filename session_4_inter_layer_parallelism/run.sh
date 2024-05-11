@@ -4,15 +4,20 @@
 #SBATCH --gres=gpu:a100:4
 #SBATCH --ntasks-per-node 128 
 #SBATCH --time=00:05:00 
-#SBATCH -A isc2023-aac 
+#SBATCH -A isc-aac
 
-DATA_DIR="/scratch/zt1/project/isc2023/shared/"
+module load python gcc/9.4.0 cuda openmpi/gcc
+VENV_HOME="/scratch/zt1/project/isc/shared/"
 
-. /scratch/zt1/project/isc2023/shared/tutorial-venv/bin/activate
+# Activate python virtual environment
+source $VENV_HOME/tutorial-venv/bin/activate
+
+DATA_DIR="$VENV_HOME/data"
+
 
 module load cuda
 
-INSTALL_PATH="/scratch/zt1/project/isc2023/shared/installations"
+INSTALL_PATH="/scratch/zt1/project/isc/shared/openmpi/build/"
 export PATH="${PATH}:${INSTALL_PATH}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${INSTALL_PATH}/lib"
 

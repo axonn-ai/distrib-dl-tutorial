@@ -3,9 +3,14 @@
 #SBATCH -p gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --time=00:05:00
-#SBATCH -A isc2023-aac
+#SBATCH -A isc-aac
 
-DATA_DIR="../data/"
+module load python gcc/9.4.0 cuda openmpi/gcc
+VENV_HOME="/scratch/zt1/project/isc/shared/"
+
+# Activate python virtual env
+source $VENV_HOME/tutorial-venv/bin/activate
+DATA_DIR="$VENV_HOME/data"
 
 
 SCRIPT=train.py
@@ -23,7 +28,7 @@ if [ ${CHECKPOINT_ACTIVATIONS} == "true" ]; then
 	ARGS="${ARGS} --checkpoint-activations"
 fi
 
-cmd="python ${SCRIPT} ${ARGS}"
+cmd="python -u ${SCRIPT} ${ARGS}"
 echo $cmd
 
 python ${SCRIPT} ${ARGS}
