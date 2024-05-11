@@ -28,19 +28,19 @@ been downloaded in `/scratch/zt1/project/isc2023/shared/MNIST`.
 
 ```bash
 cd session_1_basics/
-sbatch --reservation=isc2023 run.sh
+sbatch --reservation=isc2024 run.sh
 ```
 
 ### Mixed Precision
 
 ```bash
-MIXED_PRECISION=true sbatch --reservation=isc2023 run.sh
+MIXED_PRECISION=true sbatch --reservation=isc2024 run.sh
 ```
 
 ### Activation Checkpointing
 
 ```bash
-CHECKPOINT_ACTIVATIONS=true sbatch --reservation=isc2023 run.sh
+CHECKPOINT_ACTIVATIONS=true sbatch --reservation=isc2024 run.sh
 ```
 
 ## Data Parallelism
@@ -49,21 +49,21 @@ CHECKPOINT_ACTIVATIONS=true sbatch --reservation=isc2023 run.sh
 
 ```bash
 cd session_2_data_parallelism
-sbatch --reservation=isc2023 run_ddp.sh
+sbatch --reservation=isc2024 run_ddp.sh
 ```
 
 ### Zero Redundancy Optimizer (ZeRO)
 
 
 ```bash
-sbatch --reservation=isc2023 run_deepspeed.sh
+sbatch --reservation=isc2024 run_deepspeed.sh
 ```
 
 ## Tensor Parallelism
 
 ```bash
 cd session_3_tensor_parallelism
-sbatch --reservation=isc2023 run.sh
+sbatch --reservation=isc2024 run.sh
 ```
 
 ## Pipeline Parallelism
@@ -71,11 +71,11 @@ sbatch --reservation=isc2023 run.sh
 
 ```bash
 cd session_3_pipeline_parallelism
-sbatch --reservation=isc2023 run.sh
+sbatch --reservation=isc2024 run.sh
 ```
 
 ### Hybrid Pipeline+Data Parallelism
 
 ```bash
-HYBRID_PARR=true sbatch --reservation=isc2023 run.sh
+HYBRID_PARR=true sbatch --reservation=isc2024 run.sh
 ```
