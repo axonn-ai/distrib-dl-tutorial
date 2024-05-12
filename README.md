@@ -1,6 +1,6 @@
-# ISC 23 - Tutorial on Distributed Training of Deep Neural Networks
+# ISC 24 - Tutorial on Distributed Training of Deep Neural Networks
 
-[![Join slack](https://img.shields.io/badge/slack-axonn--users-blue)](https://join.slack.com/t/axonn-users/shared_invite/zt-1vw4fm25c-XAH9n9d_3hg5TuHMw_7Ggw)
+[![Join slack](https://img.shields.io/badge/slack-axonn--users-blue)](https://join.slack.com/t/axonn-users/shared_invite/zt-2itbahk29-_Ig1JasFxnuVyfMtcC4GnA)
 
 All the code for the hands-on exercies can be found in this repository. 
 
@@ -14,13 +14,13 @@ All the code for the hands-on exercies can be found in this repository.
 
 ## Setup 
 
-To request an account on Zaratan, please fill [this form](https://docs.google.com/forms/d/e/1FAIpQLSeHoELzzWfOlo3YnCDxLyfY581hWuSidjWgzIvUq2gGFOinWw/viewform?usp=sf_link).
+To request an account on Zaratan, please join slack at the link above, and fill [this Google form](https://forms.gle/bowh2GWQaG34EZyq6).
 
 We have pre-built the dependencies required for this tutorial on Zaratan. This
 will be activated automatically when you run the bash scripts.
 
 The training dataset i.e. [MNIST](http://yann.lecun.com/exdb/mnist/) has also
-been downloaded in `/scratch/zt1/project/isc2023/shared/MNIST`.
+been downloaded in `/scratch/zt1/project/isc/shared/data/MNIST`.
 
 ## Basics of Model Training
 
@@ -59,22 +59,22 @@ sbatch --reservation=isc2024 run_ddp.sh
 sbatch --reservation=isc2024 run_deepspeed.sh
 ```
 
-## Tensor Parallelism
+## Intra-layer (Tensor) Parallelism
 
 ```bash
-cd session_3_tensor_parallelism
+cd session_3_intra_layer_parallelism
 sbatch --reservation=isc2024 run.sh
 ```
 
-## Pipeline Parallelism
+## Inter-layer (Pipeline) Parallelism
 
 
 ```bash
-cd session_3_pipeline_parallelism
+cd session_4_inter_layer_parallelism
 sbatch --reservation=isc2024 run.sh
 ```
 
-### Hybrid Pipeline+Data Parallelism
+### Hybrid Inter-layer (Pipeline) + Data Parallelism
 
 ```bash
 HYBRID_PARR=true sbatch --reservation=isc2024 run.sh
