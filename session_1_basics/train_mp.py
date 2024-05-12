@@ -21,6 +21,8 @@ if __name__ == "__main__":
     parser = create_parser()
     args = parser.parse_args()
     set_seed(args.seed)
+
+    ## Step 0 - Create a dataset object with transformations
     augmentations = transforms.Compose(
         [
             transforms.Resize(args.image_size, interpolation=transforms.InterpolationMode.BILINEAR),
@@ -30,28 +32,30 @@ if __name__ == "__main__":
         ]
     )
 
-    ## Step 1 - Create Dataloaders
+    ## Step 1 - Create Dataloader for MNIST
     train_dataset = torchvision.datasets.MNIST(
         root=args.data_dir, train=True, transform=augmentations
     )
 
     train_loader = torch.utils.data.DataLoader(train_dataset, 
             batch_size=args.batch_size, drop_last=True, num_workers=1)
-    
+
     ## Step 2 - Create Neural Network 
     net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
+
     params = num_params(net) / 1e6 
-    
+
     ## Step 3 - Create Optimizer and LR scheduler
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr)
-    
+
     ## Step 4 - Create Loss Function
     loss_fn = torch.nn.CrossEntropyLoss()
 
-    ## Step 5 - Train
+    ## Create CUDA events for profiling
     start_event = torch.cuda.Event(enable_timing=True)
     stop_event = torch.cuda.Event(enable_timing=True)
-   
+
+    ## Step 5 - Train
     print("Start training in mixed-precision ...\n")
     print(f"Model Size = {params} M")
 
@@ -77,9 +81,11 @@ if __name__ == "__main__":
            
             ## scaling loss before doing the backward pass
             scaler.scale(iter_loss).backward()
+
             ## unscale gradients and run optimizer
             scaler.step(optimizer)
-            ## update loss scale 
+
+            ## update loss scale
             scaler.update()
             
             epoch_loss += iter_loss

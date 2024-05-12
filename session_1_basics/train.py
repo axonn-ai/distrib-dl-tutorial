@@ -38,21 +38,20 @@ if __name__ == "__main__":
         ]
     )
 
+    ## Step 1 - Create Dataloader for MNIST
     train_dataset = torchvision.datasets.MNIST(
         root=args.data_dir, train=True, transform=augmentations
     )
 
-    ## Step 1 - Create Dataloader for MNIST
     train_loader = torch.utils.data.DataLoader(train_dataset, 
             batch_size=args.batch_size, drop_last=True, num_workers=1)
 
-   
     ## Step 2 - Create Neural Network 
     net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
 
     params = num_params(net) / 1e6 
-    
-    ## Step 3 - Create Optimizer
+
+    ## Step 3 - Create Optimizer and LR scheduler
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr)
 
     ## Step 4 - Create Loss Function
@@ -61,7 +60,7 @@ if __name__ == "__main__":
     ## Create CUDA events for profiling
     start_event = torch.cuda.Event(enable_timing=True)
     stop_event = torch.cuda.Event(enable_timing=True)
-   
+
     ## Step 5 - Train
     print("Start training ...\n")
     print(f"Model Size = {params} M")
