@@ -6,7 +6,7 @@
 #SBATCH --time=00:05:00 
 #SBATCH -A isc-aac
 
-module load python gcc/9.4.0 cuda openmpi/gcc
+module load python gcc/9.4.0 cuda
 VENV_HOME="/scratch/zt1/project/isc/shared/"
 
 # Activate python virtual environment
