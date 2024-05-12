@@ -24,10 +24,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     set_seed(args.seed)
 
-    ## Step 1 - Initialize DeepSpeed Distributed
+    ## Step 0 - Initialize DeepSpeed Distributed
     deepspeed.init_distributed()
     log_dist('initialized deepspeed', ranks=[0])
 
+    ## Step 1 - Create a dataset object with transformations
     augmentations = transforms.Compose(
         [
             transforms.Resize(args.image_size, interpolation=transforms.InterpolationMode.BILINEAR),
@@ -46,13 +47,10 @@ if __name__ == "__main__":
     net = FC_Net(args.num_layers, args.image_size**2, args.hidden_size, 10).cuda()
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr)
     params = num_params(net) / 1e6
-   
 
     ## Step 4 - Create model, optimizer, trainloader
-    
     model_engine, optimizer, train_loader, __ = deepspeed.initialize(
         args=args, model=net, optimizer=optimizer, training_data=train_dataset)
-   
 
     ## Step 6 - Create Loss Function
     loss_fn = torch.nn.CrossEntropyLoss()

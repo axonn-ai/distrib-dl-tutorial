@@ -32,10 +32,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     set_seed(args.seed)
     
-    ## Step 1 - Initialize Pytorch Distributed
+    ## Step 0 - Initialize Pytorch Distributed
     set_device_and_init_torch_dist()
     log_dist('initialized pytorch dist', ranks=[0])
 
+    ## Step 1 - Create a dataset object with transformations
     augmentations = transforms.Compose(
         [
             transforms.Resize(args.image_size, interpolation=transforms.InterpolationMode.BILINEAR),
