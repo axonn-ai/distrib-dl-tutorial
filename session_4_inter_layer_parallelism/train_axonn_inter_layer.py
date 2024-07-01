@@ -5,6 +5,7 @@ import os
 from torchvision import transforms
 import numpy as np
 from axonn import axonn as ax
+from axonn.inter_layer import AxoNN_Inter_Layer_Engine
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -26,9 +27,6 @@ if __name__ == "__main__":
                 G_inter=args.G_inter,
                 G_intra_r=1,
                 G_intra_c=1,
-                mixed_precision=True,
-                fp16_allreduce=True,
-                cpu_offload=False
             )
     
     log_dist('initialized AxoNN', ranks=[0])
@@ -60,13 +58,12 @@ if __name__ == "__main__":
     
     ## Step 4 - Create Optimizer 
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr)
-    
-    ## Step 4 - register model and optimizer with AxoNN
-    net, optimizer = ax.register_model_and_optimizer(net, optimizer)
 
-    ## Step 6 - Create Loss Function and register it
+    ## Step 5 - Create Loss Function 
     loss_fn = torch.nn.CrossEntropyLoss()
-    ax.register_loss_fn(loss_fn)
+
+    ## Step 6 - Declare PipeEngine
+    engine = AxoNN_Inter_Layer_Engine(net, loss_fn, computation_dtype=torch.bfloat16)
 
     ## Step 7 - Train
     start_event = torch.cuda.Event(enable_timing=True)
@@ -88,19 +85,17 @@ if __name__ == "__main__":
             optimizer.zero_grad()
             img = img.cuda()
             label = label.cuda()
-            iter_loss = ax.run_batch(img, label)
-            optimizer.step()
-            
+            iter_loss = engine.forward_backward_optimizer(img, label, optimizer)
             epoch_loss += iter_loss
             stop_event.record()
             torch.cuda.synchronize()
             iter_time = start_event.elapsed_time(stop_event)
             iter_times.append(iter_time)
             if iter_ % PRINT_EVERY == 0 and ax.config.inter_layer_parallel_rank == ax.config.G_inter-1 and ax.config.data_parallel_rank == 0:
-                ax.print_status(f"Epoch {epoch} | Iter {iter_}/{len(train_loader)} | Iter Train Loss = {iter_loss:.3f} | Iter Time = {iter_time/1000:.6f} s")
+                print(f"Epoch {epoch} | Iter {iter_}/{len(train_loader)} | Iter Train Loss = {iter_loss:.3f} | Iter Time = {iter_time/1000:.6f} s")
                 print_memory_stats()
             iter_ += 1
         if ax.config.inter_layer_parallel_rank == ax.config.G_inter-1 and ax.config.data_parallel_rank == 0:
-            ax.print_status(f"Epoch {epoch} : Epoch Train Loss= {epoch_loss/len(train_loader):.3f} | Average Iter Time = {np.mean(iter_times)/1000:.6f} s")
+            print(f"Epoch {epoch} : Epoch Train Loss= {epoch_loss/len(train_loader):.3f} | Average Iter Time = {np.mean(iter_times)/1000:.6f} s")
         
     log_dist(f"\n End Training ...", [0])
