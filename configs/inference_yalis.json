@@ -1,0 +1,6 @@
+{
+	"model_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+	"precision": "bf16",
+        "compile": false,
+	"tokens_to_generate": 1024
+}

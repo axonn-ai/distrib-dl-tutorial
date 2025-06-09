@@ -16,6 +16,7 @@ def parse_json_args(filename):
         "num_epochs": 1,
         "random_init": False,
         "compile": False,
+        "tokens_to_generate": 512,
     }
 
     user_args = {}

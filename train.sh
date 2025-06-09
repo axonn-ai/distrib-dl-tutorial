@@ -3,13 +3,13 @@
 #SBATCH -t 00:05:00
 #SBATCH -p gpu
 #SBATCH --gres=gpu:a100:4
-#SBATCH -A sc24-class
+#SBATCH -A isc-aac
 #SBATCH --exclusive
 #SBATCH --mem=500G
-#SBATCH --reservation=sc24tut
+#SBATCH --reservation=isc
 
 
-export SCRATCH="/scratch/zt1/project/sc24/shared/"
+export SCRATCH="/scratch/zt1/project/isc/shared/"
 export HF_HOME="${SCRATCH}/.cache/huggingface"
 export HF_TRANSFORMERS_CACHE="${HF_HOME}"
 export HF_DATASETS_CACHE="${HF_HOME}/datasets"

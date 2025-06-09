@@ -44,9 +44,9 @@ def init_everything(precision, strategy, tp_dimensions):
         )
     elif strategy == "axonn":
         pl_strategy = AxonnStrategy(
-            G_intra_x=tp_dimensions[0],
-            G_intra_y=tp_dimensions[1],
-            G_intra_z=tp_dimensions[2],
+            G_intra_r=tp_dimensions[0],
+            G_intra_c=tp_dimensions[1],
+            G_intra_d=tp_dimensions[2],
             overlap_communication=True,
         )
 
@@ -78,7 +78,7 @@ def create_parser():
 
 
 def get_dataloader(args):
-    data_dir = os.path.join(os.getenv("SCRATCH", "data"), "alpaca", args.model_id)
+    data_dir = os.path.join(os.getenv("SCRATCH", "data"), "data/alpaca", args.model_id)
     try:
         tokenized_dataset = load_from_disk(data_dir)
     except Exception as e:
