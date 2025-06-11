@@ -88,3 +88,28 @@ GPUS=1 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=1  infe
 ```bash
 GPUS=4 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=4 --gres=gpu:a100:4 infer.sh
 ```
+
+
+### Online Inference with VLLM
+
+For session host: Take an interactive session
+```bash
+sinteractive -N 1 -G -g gpu:a100:1 -c 32 -t 59 -A isc-aac --exclusive --mem=500G --reservation=isc
+```
+
+Then run:
+```bash
+bash vllm_serve.sh
+```
+
+For participants:
+```bash
+curl http://<Server IP>:8000/v1/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "meta-llama/Llama-3.2-1B-Instruct",
+        "prompt": "San Francisco is a",
+        "max_tokens": 32,
+        "temperature": 0
+    }'
+```
