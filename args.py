@@ -14,6 +14,7 @@ def parse_json_args(filename):
         "gradient_acc_steps": 1,
         "log_interval": 1,
         "num_epochs": 1,
+        "stop_iteration": 35,
         "random_init": False,
         "compile": False,
         "tokens_to_generate": 512,

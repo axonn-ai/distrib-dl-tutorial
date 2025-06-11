@@ -64,7 +64,7 @@ CONFIG_FILE=configs/axonn.json sbatch --ntasks-per-node=4 --gres=gpu:a100:4 trai
 Add more prompts to `data/inference/prompts.txt` if you want. Then run
 
 ```bash
-GPUS=1 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=1 infer.sh
+GPUS=1 CONFIG_FILE=configs/inference_yalis.json sbatch --ntasks-per-node=1 infer.sh
 ```
 
 ### With torch.compile
@@ -72,7 +72,7 @@ GPUS=1 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=1 infer
 Open `infer.sh` and change `YALIS_DISABLE_COMPILE` from `1` to `0`. Then run 
 
 ```bash
-GPUS=1 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=1  infer.sh
+GPUS=1 CONFIG_FILE=configs/inference_yalis.json sbatch --ntasks-per-node=1  infer.sh
 ```
 
 ### With cuda graphs
@@ -80,13 +80,13 @@ GPUS=1 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=1  infe
 Open `infer.sh` and change `YALIS_DISABLE_DECODE_CUDAGRAPHS` from `1` to `0` (make sure torch compile is also enabled). Then run 
 
 ```bash
-GPUS=1 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=1  infer.sh
+GPUS=1 CONFIG_FILE=configs/inference_yalis.json sbatch --ntasks-per-node=1  infer.sh
 ```
 
 ### With tensor parallelism
 
 ```bash
-GPUS=4 CONFIG_FILE=configs/inference_axonn.json sbatch --ntasks-per-node=4 --gres=gpu:a100:4 infer.sh
+GPUS=4 CONFIG_FILE=configs/inference_yalis.json sbatch --ntasks-per-node=4 --gres=gpu:a100:4 infer.sh
 ```
 
 

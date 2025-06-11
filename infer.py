@@ -90,4 +90,6 @@ if __name__ == "__main__":
 
     print_rank0(f"-"*40 + "\n")
     print_rank0(f"Throughput: {metrics['Throughput']} tok/s")
+    print_rank0(f"Time to First Token (TTFT): {metrics['TTFT']} ms")
+    print_rank0(f"Time Between Tokens (TBT): {metrics['TBT']} ms")
 

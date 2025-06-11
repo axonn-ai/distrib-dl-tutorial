@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -N 1
-#SBATCH -t 00:05:00
+#SBATCH -t 00:06:00
 #SBATCH -p gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH -A isc-aac
