@@ -5,5 +5,6 @@
 	"precision": "bf16-mixed", 
 	"global_batch_size": 32, 
 	"gradient_acc_steps": 8, 
-	"dataset_id": "alpaca"
+	"dataset_id": "alpaca",
+	"stop_iteration": 35
 }

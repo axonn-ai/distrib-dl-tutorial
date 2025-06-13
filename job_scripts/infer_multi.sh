@@ -7,8 +7,8 @@
 #SBATCH -A isc-aac
 #SBATCH --exclusive
 #SBATCH --mem=500G
-#SBATCH --reservation=isc
 #SBATCH --error=/dev/null
+#SBATCH --reservation=isc
 
 
 export SCRATCH="/scratch/zt1/project/isc/shared/"
@@ -41,9 +41,6 @@ source /tmp/tutorial_env/bin/activate
 
 CONFIG_FILE="${CONFIG_FILE:-configs/inference_yalis.json}"
 GPUS=4
-
-export YALIS_DISABLE_COMPILE=1
-export YALIS_DISABLE_DECODE_CUDAGRAPHS=1
 
 # Run torchrun with specified number of GPUs
 srun -N 1 -n ${GPUS} -u ./get_rank.sh python -u infer.py --config-file $CONFIG_FILE

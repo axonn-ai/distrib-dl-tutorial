@@ -199,7 +199,7 @@ if __name__ == "__main__":
 
         batch_loss = torch.tensor([0.0], dtype=torch.float32, device="cuda")
         for batch in dataloader:
-            if iter_no >= args.stop_iteration:
+            if args.stop_iteration > 0 and iter_no >= args.stop_iteration:
                 if torch.distributed.get_rank() == 0:
                     print("\n\n\n")
                     print(f"Ending Training after {iter_no} steps")

@@ -3,5 +3,7 @@
 	"strategy": "ddp",
 	"precision": "bf16-mixed", 
 	"global_batch_size": 128, 
-	"dataset_id": "alpaca"
+	"dataset_id": "alpaca",
+	"stop_iteration": 35
+
 }
