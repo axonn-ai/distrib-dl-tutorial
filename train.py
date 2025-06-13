@@ -44,9 +44,9 @@ def init_everything(precision, strategy, tp_dimensions):
         )
     elif strategy == "axonn":
         pl_strategy = AxonnStrategy(
-            G_intra_x=tp_dimensions[0],
-            G_intra_y=tp_dimensions[1],
-            G_intra_z=tp_dimensions[2],
+            G_intra_r=tp_dimensions[0],
+            G_intra_c=tp_dimensions[1],
+            G_intra_d=tp_dimensions[2],
             overlap_communication=True,
         )
 
@@ -78,7 +78,7 @@ def create_parser():
 
 
 def get_dataloader(args):
-    data_dir = os.path.join(os.getenv("SCRATCH", "data"), "alpaca", args.model_id)
+    data_dir = os.path.join(os.getenv("SCRATCH", "data"), "data/alpaca", args.model_id)
     try:
         tokenized_dataset = load_from_disk(data_dir)
     except Exception as e:
@@ -199,6 +199,12 @@ if __name__ == "__main__":
 
         batch_loss = torch.tensor([0.0], dtype=torch.float32, device="cuda")
         for batch in dataloader:
+            if args.stop_iteration > 0 and iter_no >= args.stop_iteration:
+                if torch.distributed.get_rank() == 0:
+                    print("\n\n\n")
+                    print(f"Ending Training after {iter_no} steps")
+                    print("\n\n\n")
+                break
             input_ids, labels = (
                 batch["input_ids"].cuda(),
                 batch["labels"].cuda(),
