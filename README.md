@@ -91,14 +91,11 @@ CONFIG_FILE=configs/inference_yalis.json sbatch infer_multi.sh
 
 ### Online Inference with VLLM
 
-For participants:
+Query the vllm server we setup as follows:
 ```bash
-curl http://<Server IP>:8000/v1/completions \
-    -H "Content-Type: application/json" \
-    -d '{
-        "model": "meta-llama/Llama-3.2-1B-Instruct",
-        "prompt": "San Francisco is a",
-        "max_tokens": 32,
-        "temperature": 0
-    }'
+# Usage: ./llm_request.sh <server_ip> "<prompt>" [max_tokens]
+
+./llm_request.sh <vLLM Server IP> "San Francisco is a" 64
 ```
+
+Change the prompt and the max tokens argument to play around with command
