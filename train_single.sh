@@ -5,8 +5,7 @@
 #SBATCH -p gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH -A isc-aac
-#SBATCH --exclusive
-#SBATCH --mem=500G
+#SBATCH --mem=100G
 #SBATCH --reservation=isc
 
 
