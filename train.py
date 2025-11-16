@@ -47,7 +47,7 @@ def init_everything(precision, strategy, tp_dimensions):
             G_intra_r=tp_dimensions[0],
             G_intra_c=tp_dimensions[1],
             G_intra_d=tp_dimensions[2],
-            overlap_communication=True,
+            overlap_communication=False,
         )
 
     # create lightning fabric object
