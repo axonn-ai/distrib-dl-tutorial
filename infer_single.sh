@@ -6,9 +6,7 @@
 #SBATCH --gres=gpu:a100:1
 #SBATCH -A sc25-aac
 #SBATCH --mem=100G
-#SBATCH --error=/dev/null
 #SBATCH --reservation=sc25
-
 
 export SCRATCH="/scratch/zt1/project/sc25/shared/"
 export HF_HOME="${SCRATCH}/.cache/huggingface"
@@ -18,7 +16,25 @@ export YALIS_CACHE="${SCRATCH}"
 
 # variables needed for torch.distributed
 export MASTER_ADDR=$(hostname -I | awk '{print $1}')
-export MASTER_PORT=29500
+
+START_PORT=29500
+PORT=$START_PORT
+
+while true; do
+    if netstat -tuln | grep -q ":$PORT "; then
+        PORT=$((PORT+1))
+    else
+        export MASTER_PORT=$PORT
+        echo "MASTER_PORT=$MASTER_PORT"
+        break
+    fi
+
+    if [ $PORT -gt 65535 ]; then
+        echo "No available ports"
+        exit 1
+    fi
+done
+
 
 # nccl env vars to speedup stuff
 export CUDA_DEVICE_MAX_CONNECTIONS=1
@@ -29,14 +45,14 @@ export NCCL_CROSS_NIC=1
 
 echo "Copying python environment to fast node local storage"
 start=`date +%s`
-mkdir -p /tmp/tutorial_env
-tar -xzf ${SCRATCH}/miniconda3.tar.gz -C /tmp/tutorial_env
+mkdir -p /tmp/${USER}/tutorial_env
+tar -xzf ${SCRATCH}/miniconda3.tar.gz -C /tmp/${USER}/tutorial_env
 end=`date +%s`
 runtime=$((end-start))
 echo "Copy completed. Time taken = ${runtime} s"
 
 # activate environment
-source /tmp/tutorial_env/bin/activate
+source /tmp/${USER}/tutorial_env/bin/activate
 
 CONFIG_FILE="${CONFIG_FILE:-configs/inference_yalis.json}"
 GPUS=1

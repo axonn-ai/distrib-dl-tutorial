@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # Model Config
     model_config = ModelConfig(model_name=args.model_id, precision=args.precision)
-    inference_config = InferenceConfig(batch_size=len(formatted_prompts), 
+    inference_config = InferenceConfig(max_batch_size=len(formatted_prompts), 
                                        max_length_of_generated_sequences=2*args.tokens_to_generate,
                                        top_p=0.80,
                                        temperature=1.0, 
