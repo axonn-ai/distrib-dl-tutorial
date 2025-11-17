@@ -16,25 +16,10 @@ export YALIS_CACHE="${SCRATCH}"
 
 # variables needed for torch.distributed
 export MASTER_ADDR=$(hostname -I | awk '{print $1}')
-
-START_PORT=29500
-PORT=$START_PORT
-
-while true; do
-    if netstat -tuln | grep -q ":$PORT "; then
-        PORT=$((PORT+1))
-    else
-        export MASTER_PORT=$PORT
-        echo "MASTER_PORT=$MASTER_PORT"
-        break
-    fi
-
-    if [ $PORT -gt 65535 ]; then
-        echo "No available ports"
-        exit 1
-    fi
-done
-
+USER_ID=$(( 0x$(echo -n "$USER" | md5sum | cut -c1-8) % 76 ))
+BASE_PORT=29500
+export MASTER_PORT=$(( BASE_PORT + USER_ID ))
+echo "MASTER_PORT=$MASTER_PORT"
 
 # nccl env vars to speedup stuff
 export CUDA_DEVICE_MAX_CONNECTIONS=1
