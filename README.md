@@ -69,7 +69,7 @@ CONFIG_FILE=configs/inference_yalis.json sbatch infer_single.sh
 
 ### With torch.compile
 
-Open `infer.sh` and change `YALIS_DISABLE_COMPILE` from `1` to `0`. Then run 
+Open `infer_single.sh` and change `YALIS_DISABLE_COMPILE` from `1` to `0`. Then run 
 
 ```bash
 CONFIG_FILE=configs/inference_yalis.json sbatch infer_single.sh
@@ -77,7 +77,7 @@ CONFIG_FILE=configs/inference_yalis.json sbatch infer_single.sh
 
 ### With cuda graphs
 
-Open `infer.sh` and change `YALIS_DISABLE_DECODE_CUDAGRAPHS` from `1` to `0` (make sure torch compile is also enabled). Then run 
+Open `infer_single.sh` and change `YALIS_DISABLE_DECODE_CUDAGRAPHS` from `1` to `0` (make sure torch compile is also enabled). Then run 
 
 ```bash
 CONFIG_FILE=configs/inference_yalis.json sbatch infer_single.sh
