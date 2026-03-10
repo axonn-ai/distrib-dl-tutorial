@@ -4,14 +4,14 @@
 #SBATCH -t 00:06:00
 #SBATCH -p gpu
 #SBATCH --gres=gpu:a100:4
-#SBATCH -A sc25-aac
+#SBATCH -A nairr-class
 #SBATCH --exclusive
 #SBATCH --mem=500G
 #SBATCH --error=/dev/null
-#SBATCH --reservation=sc25
+#SBATCH --reservation=nairr
 
 
-export SCRATCH="/scratch/zt1/project/sc25/shared/"
+export SCRATCH="/scratch/zt1/project/nairr/shared/"
 export HF_HOME="${SCRATCH}/.cache/huggingface"
 export HF_TRANSFORMERS_CACHE="${HF_HOME}"
 export HF_DATASETS_CACHE="${HF_HOME}/datasets"
