@@ -14,7 +14,7 @@ All the code for the hands-on exercies can be found in this repository.
 
 ## Setup 
 
-To request an account on Zaratan, please join slack at the link above, and fill [this Google form](https://forms.gle/14g4ZTF4sJqUhg4o6).
+To request an account on Zaratan, please join slack at the link above, and fill [this Google form](https://forms.gle/KNg1mwkWb6yWHARv8).
 
 We have pre-built the dependencies required for this tutorial on Zaratan. This
 will be activated automatically when you run the bash scripts.
